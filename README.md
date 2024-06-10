@@ -26,4 +26,4 @@ This project is a memory game created using HTML, CSS, and JavaScript. The objec
 5. **Winning Condition**:
    - The game ends when all pairs are matched.
 
-This project was inspired by [dcode's YouTube tutorial](https://youtu.be/bznJPt4t_4s). I have commented on every line of code that I haven't learned to use for this project, showing my understanding of the utilized code.
+This project was inspired by [dcode's YouTube tutorial](https://youtu.be/bznJPt4t_4s). I have commented on every line of code that I have learned to use for this project, showing my understanding of the utilized code.
