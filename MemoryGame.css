@@ -1,0 +1,84 @@
+
+/* Border is used to visualise divs */
+* {
+    border: 0px dotted red;
+}
+
+/* Variables */
+:root {
+    --tile-size: 180px;
+    --tile-height: 250px;
+}
+
+/* Setting the body, ensuring all is centred */
+body {
+    height: 100vw;
+    background: linear-gradient(to bottom, rgb(102, 155, 188), rgb(0, 48, 73));
+    margin: 0;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Creating a grid display for tile class that is 6 tiles across. */
+.tiles {
+    margin: 48px auto;
+    width: max-content;
+    display: grid;
+    grid-template-columns: repeat(6, var(--tile-size));
+    gap: 16px;
+}
+
+/* Setting each tile */
+.tile {
+    background-color: rgb(120, 0, 0);
+    border: 12px solid rgb(120, 0, 0);
+    cursor: pointer; /* Cursor becomes pointer when hovering over tile */
+    border-radius: 15px;
+    height: var(--tile-height);
+    box-shadow: 0 0 4px black;
+    transition: transform 0.5s ease; /* sets the 'transform' transition */
+    background-size: contain; /* Ensures the tile contains all of the image (from the Javascript) within the tile */
+    background-repeat: no-repeat; /* Ensures that the background imagedoes not repeat to fill the background */
+    position: relative; 
+    opacity: 0; /* Sets the beginning opacity for the beginning animation */
+    animation: moveUp 1s ease-out forwards; /* Sets 'move up' animation */
+    /* 'forwards' ensures the tile retains its state in the final keyfram of moveUp */
+}
+
+/* The moveUp animation */
+@keyframes moveUp {
+    /* The first keyframe, states where the tiles come from and that they are invisible in the beginning */
+    from { 
+        transform: translateY(100vh);
+        opacity: 0;
+    }
+    /* The final keyframe, states where we want the tile to end up, and that it should be fully visible */
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+/* Tile will slightly increase when hovered over */
+.tile:hover {
+    transform: scale(1.05);
+}
+
+/* Tile will slightly increase further when clicked */
+.tile:active {
+    transform: scale(1.10);
+    transition: transform 0.1s ease;
+}
+
+/* The score of cards revealed at the bottom of the page */
+#score {
+    text-align: center;
+    margin: 0 auto;
+    width: 400px;
+    height: 40px;
+    font-weight: bold;
+    font-size: 40px;
+    font-family: 'Helvetica';
+    transition: transform 0.5s ease;
+    color: rgb(253, 240, 213);
+}
