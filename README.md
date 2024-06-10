@@ -1,4 +1,4 @@
-## Memory Game Project
+## Memory Game
 
 ![Screenshot of Memory Game](MemoryGameScreenshot.png)
 
