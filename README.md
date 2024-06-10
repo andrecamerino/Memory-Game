@@ -1,5 +1,7 @@
 ## Memory Game Project
 
+![Screenshot of Memory Game](MemoryGameScreenshot.png)
+
 This project is a memory game created using HTML, CSS, and JavaScript. The objective of the game is to match pairs of tiles by flipping them over. The game board consists of a 6x3 grid, making a total of 18 tiles. Each tile has an image of a car, and there are nine unique images, each appearing twice on the board. Players click on tiles to reveal the images underneath and try to find matching pairs. When a match is found, the tiles remain revealed. The game continues until all pairs are matched.
 
 ### How the Game Works
