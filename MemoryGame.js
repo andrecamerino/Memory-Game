@@ -1,5 +1,7 @@
 const tilesContainer = document.querySelector(".tiles"); // creates a variable that references the 'tiles' class
-const scoreElement = document.getElementById("score"); // // creates a variable that references the 'score' ID
+const scoreElement = document.getElementById("score"); // creates a variable that references the 'score' ID
+const attemptsElement = document.getElementById('attempts');
+const bottomTextElement = document.querySelector('bottom-text');
 const images = [    // must have 9 images total for 6 by 3 layout
   "url('CardFaces/BlackBugatti.png')", 
   "url('CardFaces/BlackKoenigsegg.png')",
@@ -17,14 +19,31 @@ const tileCount = imagesPickList.length;
 
 // creates updateScore function: updates score then enlarges the text then shrinks it back to normal
 const updateScore = (revealedCount) => {
-    scoreElement.textContent = `${revealedCount / 2} Pairs Revealed`;
+    if (revealedCount === 2) {
+        scoreElement.textContent = `${revealedCount / 2} Pair Revealed`;
+    } else {
+        scoreElement.textContent = `${revealedCount / 2} Pairs Revealed`;
+    }
     scoreElement.style.transform = 'scale(1.2)';
     setTimeout(() => {
         scoreElement.style.transform = 'scale(1)';
     }, 250);
 }
 
+const updateAttempts = (attemptCount) => {
+    if (attemptCount === 1) {
+        attemptsElement.textContent = `1 Attempt`;
+    } else{
+        attemptsElement.textContent = `${attemptCount} Attempts`;
+    }
+    attemptsElement.style.transform = 'scale(1.2)';
+    setTimeout(() => {
+        attemptsElement.style.transform = 'scale(1)';
+    }, 250);
+}
+
 let revealedCount = 0;
+let attemptCount = 0;
 let activeTile = null; // creates an activeTile variable but is set to no tile (nothing)
 let awaitingEndOfMove = false; // creates a variable boolean for awaitingEndOfMove: false being waiting, allowing the user to select tiles
 
@@ -61,6 +80,9 @@ const buildTile = (image) => {
         }
 
         const imageToMatch = activeTile.getAttribute('data-image'); // creates imageToMatch constant which gets the image from the active tile (the tile we selected)
+
+        attemptCount += 1;
+        updateAttempts(attemptCount);
 
         // if image of the active tile is equal to the image of the new tile we selected
         if (imageToMatch === image) {
